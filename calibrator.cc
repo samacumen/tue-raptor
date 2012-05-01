@@ -24,6 +24,11 @@ void waitKey();
 void init();	// Fill all the matrices & stuff
 
 int main(int argc, char *argv[]) {
+	FILE * calibFile;
+	printf("Welcome to the calibration tool for the quadcopter\n");
+	printf("Active calibration functions: ACCELEROMETER\n");
+	printf("Please type 'q' to quit if you lose your patience. Good luck!\n\n");
+	
 	init();
 	
 	// Connect to the sensors, disable calibration of the sensor outputs
@@ -42,10 +47,24 @@ int main(int argc, char *argv[]) {
 	
 	printf("\nTHANKS Buddy! Now going to calculate optimal calibration values...\n\n");
 	
-	// TODO, the line below is just bluffing ;-)
+	// Calculate accelCalib matrix by finding the least squares solution (pseudo-inverse)
+	// accelCalib is a 3x4 matrix
+	//  - The first 3x3 part is the calibration matrix
+	//  - Te last column is the offset vector
+	matrix accelCalib = (*A_opt) * (*A_raw).pseudo_inverse();
+	// Write the values to calibrate/accel.txt:
+	remove("calibrate/accel.txt");
+  calibFile = fopen ("calibrate/accel.txt","w");
+  for (int i=0; i<3; i++) {
+  	for (int j=0; j<3; j++) {
+			fprintf(calibFile, "%.4f\n", accelCalib.data[i][j]);
+		}
+	}
+	for (int i=0; i<3; i++) {
+		fprintf(calibFile, "%.4f\n", accelCalib.data[i][3]);
+	}
+	fclose(calibFile);
 	
-	printf("\nDONE! The values are stored in calibration_*.txt files\n");
-
 	// One should clean up his own crap:
 	delete accel;
 	// Things that are loaded in init():
