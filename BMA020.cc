@@ -1,6 +1,7 @@
 /*
- * 5HC99 Quadcopter project, group 1.
+ * 5HC99 Quadcopter project
  * BMA020 accelerometer driver (i2c)
+ * Group 1, Marco Cox, m.g.h.cox@student.tue.nl
  */
 
 #include <sys/ioctl.h>

@@ -1,5 +1,5 @@
 /*
- * 5HC99 Quadcopter project, group 1.
+ * 5HC99 Quadcopter project
  * Some matrix & vector types and functions
  */
 

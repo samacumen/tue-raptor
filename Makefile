@@ -2,7 +2,7 @@ CC=g++
 CFLAGS=-c -Wall
 LDFLAGS=
 
-SOURCES_RAPTOR=main.cc matrix.cc BMA020.cc SRF02.cc IMU.cc
+SOURCES_RAPTOR=main.cc matrix.cc BMA020.cc SRF02.cc
 OBJECTS_RAPTOR=$(SOURCES_RAPTOR:.cc=.o)
 
 SOURCES_CALIBRATOR=calibrator.cc matrix.cc BMA020.cc
