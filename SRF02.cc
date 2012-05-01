@@ -1,7 +1,6 @@
 /*
- * 5HC99 Quadcopter project
+ * 5HC99 Quadcopter project, group 1.
  * SRF02 ultrasound range finder driver (i2c)
- * Group 1, Marco Cox, m.g.h.cox@student.tue.nl
  */
 
 #include <sys/ioctl.h>
