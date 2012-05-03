@@ -209,7 +209,7 @@ void BMA020_ACCEL::loadCalibration() {
 
 int BMA020_ACCEL::readByte(int address) {
 	if (!(this->handle>0)) return 0;	// Not connected to sensor
-	int res = i2c_smbus_read_word_data(this->handle, address);
+	int res = i2c_smbus_read_byte_data(this->handle, address);
 	if (res<0) {
 		if (!BMA020_QUIET) {
 			fprintf(stderr, 

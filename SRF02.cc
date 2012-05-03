@@ -148,7 +148,7 @@ void SRF02_US::saveMeasurement() {
 
 int SRF02_US::readByte(int address) {
 	if (!(this->handle>0)) return 0;	// Not connected to sensor
-	int res = i2c_smbus_read_word_data(this->handle, address);
+	int res = i2c_smbus_read_byte_data(this->handle, address);
 	if (res<0) {
 		if (!SRF02_QUIET) {
 			fprintf(stderr, 
